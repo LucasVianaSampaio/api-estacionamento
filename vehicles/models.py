@@ -3,6 +3,8 @@ from django.db import models
 from customers.models import Customer
 
 # Create your models here.
+
+
 class VehicleType(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name='Nome')
     description = models.TextField(blank=True, null=True, verbose_name='Descrição')
@@ -10,8 +12,8 @@ class VehicleType(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Atualizado em')
 
     class Meta:
-        verbose_name='Tipo de veículo'
-        verbose_name_plural='Tipos de veículo' 
+        verbose_name = 'Tipo de veículo'
+        verbose_name_plural = 'Tipos de veículo'
 
     def __str__(self):
         return self.name
@@ -19,32 +21,31 @@ class VehicleType(models.Model):
 
 class Vehicle(models.Model):
     vehicle_type = models.ForeignKey(
-        VehicleType, 
-        on_delete=models.PROTECT, 
-        blank=True, 
-        null=True, 
-        related_name='vehicle', 
+        VehicleType,
+        on_delete=models.PROTECT,
+        blank=True,
+        null=True,
+        related_name='vehicle',
         verbose_name='Tipo do Veículo'
     )
     owner = models.ForeignKey(
         Customer,
         on_delete=models.PROTECT,
-        blank=True, 
+        blank=True,
         null=True,
         related_name='vehicle',
         verbose_name='Proprietário'
     )
     licence_plate = models.CharField(max_length=10, unique=True, verbose_name='Placa')
-    brand = models.CharField(max_length=50, blank=True, null=True, verbose_name='Marca') #marca do carro tentar por numa tabela separada pra ser adicionada com marcas depois e só interligar
+    brand = models.CharField(max_length=50, blank=True, null=True, verbose_name='Marca')
     model = models.CharField(max_length=50, blank=True, null=True, verbose_name='Modelo')
     color = models.CharField(max_length=50, blank=True, null=True, verbose_name='Cor')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Criado em')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Atualizado em')
 
     class Meta:
-        verbose_name='Veículo'
-        verbose_name_plural='Veículos'
+        verbose_name = 'Veículo'
+        verbose_name_plural = 'Veículos'
 
-    
     def __str__(self):
         return self.licence_plate

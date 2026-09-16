@@ -6,6 +6,7 @@ from core.permissions import isOwnerOfVehicleOrRecord
 from parking.models import ParkingSpot, ParkingRecord
 from parking.serializers import ParkingSpotSerializer, ParkingRecordSerializer
 
+
 class ParkingSpotViewSet(viewsets.ModelViewSet):
     queryset = ParkingSpot.objects.all()
     serializer_class = ParkingSpotSerializer
@@ -22,4 +23,3 @@ class ParkingRecordViewSet(viewsets.ModelViewSet):
         if user.is_staff:
             return ParkingRecord.objects.all()
         return ParkingRecord.objects.filter(vehicle__owner__user=user)
-

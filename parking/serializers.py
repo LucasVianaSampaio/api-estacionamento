@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from parking.models import ParkingSpot, ParkingRecord
 
+
 class ParkingSpotSerializer(serializers.ModelSerializer):
 
     class Meta:

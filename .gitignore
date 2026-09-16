@@ -32,3 +32,6 @@ Thumbs.db
 
 # Variáveis de Ambie
 .env
+
+# Configurações de Lint
+.flake8

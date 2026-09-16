@@ -3,6 +3,7 @@ from parking.models import ParkingRecord, ParkingSpot
 
 # Register your models here.
 
+
 @admin.register(ParkingSpot)
 class ParkingSpotAdmin(admin.ModelAdmin):
     list_display = ['spot_number', 'is_occuped']
@@ -19,4 +20,3 @@ class ParkingRecordAdmin(admin.ModelAdmin):
         if db_field.name == 'parking_spot' and not request.resolver_match.url_name.endswith('change'):
             kwargs['queryset'] = ParkingSpot.objects.filter(is_occuped=False)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
-

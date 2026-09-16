@@ -6,6 +6,7 @@ from core.permissions import isOwnerOfVehicleOrRecord
 from vehicles.models import VehicleType, Vehicle
 from vehicles.serializers import VehicleTypeSerializer, VehicleSerializer
 
+
 class VehicleTypeViewSet(viewsets.ModelViewSet):
     queryset = VehicleType.objects.all()
     serializer_class = VehicleTypeSerializer
@@ -22,4 +23,3 @@ class VehicleViewSet(viewsets.ModelViewSet):
         if user.is_staff:
             return Vehicle.objects.all()
         return Vehicle.objects.filter(owner__user=user)
-
