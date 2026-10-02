@@ -11,7 +11,8 @@ COPY . .
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+RUN playwright install
 
 EXPOSE 8000
 
-CMD 
+# CMD 
