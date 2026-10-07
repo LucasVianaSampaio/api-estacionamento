@@ -7,4 +7,4 @@ from .tasks import complete_vechile_data
 @receiver(post_save, sender=Vehicle)
 def complete_vechile_data_post_save(sender, instance, created, **kwargs):
     if created and not instance.brand or not instance.model or not instance.color:
-        complete_vechile_data.delay(instance.license_plate)
+        complete_vechile_data.delay(instance.licence_plate)
